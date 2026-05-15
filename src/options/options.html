@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>CUNI CAS 2FA Setup</title>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 2rem auto; max-width: 760px; line-height: 1.4; }
+      fieldset { margin-bottom: 1rem; }
+      label { display: block; margin: 0.4rem 0; }
+      input[type='text'], textarea { width: 100%; }
+      .hint { font-size: 0.9rem; color: #444; }
+      #status { margin-top: 1rem; font-weight: bold; }
+    </style>
+  </head>
+  <body>
+    <h1>CUNI CAS 2FA Assistant – Setup</h1>
+    <p class="hint">The TOTP secret is saved in Firefox extension local storage (inside your Firefox profile for this browser user).</p>
+
+    <form id="configForm">
+      <fieldset>
+        <legend>TOTP settings</legend>
+        <label>Issuer
+          <input type="text" id="issuer" placeholder="Charles University CAS" />
+        </label>
+        <label>Account name
+          <input type="text" id="accountName" placeholder="username@cuni.cz" />
+        </label>
+        <label>TOTP secret (Base32)
+          <input type="text" id="secretBase32" required placeholder="JBSWY3DPEHPK3PXP" />
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Domain matching</legend>
+        <label>Allowed domains (one per line)
+          <textarea id="domains" rows="4"></textarea>
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Automation behavior</legend>
+        <label><input type="checkbox" id="autoFill" /> Auto-fill OTP input fields</label>
+        <label><input type="checkbox" id="autoSubmit" /> Auto-submit after filling</label>
+        <label><input type="checkbox" id="autoAdvanceToNextPage" /> Auto-detect 2FA field and continue to next page</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Selector extensions</legend>
+        <p class="hint">Add additional CSS selectors if login page structure changes in future.</p>
+        <label>OTP input selectors (one per line)
+          <textarea id="otpSelectors" rows="5"></textarea>
+        </label>
+        <label>Submit selectors (one per line)
+          <textarea id="submitSelectors" rows="3"></textarea>
+        </label>
+      </fieldset>
+
+      <button type="submit">Save configuration</button>
+    </form>
+
+    <div id="status"></div>
+    <script type="module" src="options.js"></script>
+  </body>
+</html>
