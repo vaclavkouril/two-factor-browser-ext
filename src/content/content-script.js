@@ -1,4 +1,5 @@
 import { hostnameMatches, firstMatchingElement, detectOtpInput, detectOtpInputs } from "../lib/rules.js";
+import { getTotpPayload } from "../lib/runtime.js";
 
 function goToNextPage(otpInput, submitSelectors) {
   const submit = firstMatchingElement(submitSelectors);
@@ -18,7 +19,7 @@ function goToNextPage(otpInput, submitSelectors) {
 }
 
 async function fillOtpIfApplicable() {
-  const response = await browser.runtime.sendMessage({ type: "GET_TOTP" });
+  const response = await getTotpPayload();
   if (!response?.ok) return;
 
   const { config, code } = response;
