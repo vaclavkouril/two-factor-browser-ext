@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "CUNI CAS 2FA Assistant",
+  "version": "0.1.0",
+  "description": "Auto-fills TOTP codes for CAS logins (including cuni.cz CAS variants) with extensible automation rules.",
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://*.cuni.cz/*",
+    "https://cas.cuni.cz/*",
+    "https://new.cas.cuni.cz/*"
+  ],
+  "background": {
+    "service_worker": "src/background/service-worker.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "src/popup/popup.html",
+    "default_title": "CUNI CAS 2FA Assistant"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "cuni-cas-2fa-assistant@local",
+      "strict_min_version": "109.0"
+    }
+  },
+  "options_ui": {
+    "page": "src/options/options.html",
+    "open_in_tab": true
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.cuni.cz/*",
+        "https://cas.cuni.cz/*",
+        "https://new.cas.cuni.cz/*"
+      ],
+      "js": ["src/content/content-script.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
