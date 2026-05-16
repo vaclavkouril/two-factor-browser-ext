@@ -1,5 +1,7 @@
+import { getTotpPayload } from "../lib/runtime.js";
+
 async function refreshOtp() {
-  const result = await browser.runtime.sendMessage({ type: "GET_TOTP" });
+  const result = await getTotpPayload();
   const otpNode = document.getElementById("otp");
   const ttlNode = document.getElementById("ttl");
 

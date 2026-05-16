@@ -11,13 +11,6 @@
     "https://cas.cuni.cz/*",
     "https://new.cas.cuni.cz/*"
   ],
-  "background": {
-    "service_worker": "src/background/service-worker.js",
-    "scripts": [
-      "src/background/firefox-background.js"
-    ],
-    "persistent": false
-  },
   "action": {
     "default_popup": "src/popup/popup.html",
     "default_title": "CUNI CAS 2FA Assistant"
