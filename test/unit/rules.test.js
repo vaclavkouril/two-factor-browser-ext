@@ -33,3 +33,14 @@ test('detectOtpInputs returns heuristic results when configured selectors miss',
   const found = detectOtpInputs(['#missing']);
   assert.equal(found.length >= 2, true);
 });
+
+test('detectOtpInput can find token fields even when type=password', () => {
+  const tokenInput = { id: 'token', type: 'password' };
+  global.document = {
+    querySelector: (s) => (s === "input[type='password'][name*='token' i]" ? tokenInput : null),
+    querySelectorAll: () => []
+  };
+
+  const found = detectOtpInput(['#missing']);
+  assert.equal(found, tokenInput);
+});

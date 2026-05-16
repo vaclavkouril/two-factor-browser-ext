@@ -8,11 +8,13 @@
       code { font-size: 28px; letter-spacing: 2px; }
       .muted { color: #555; font-size: 12px; }
       button { margin-top: 10px; width: 100%; }
+      .row { display: flex; align-items: center; gap: 8px; }
+      .row button { width: auto; margin-top: 0; }
     </style>
   </head>
   <body>
     <h3>CUNI CAS 2FA</h3>
-    <div>Current code: <code id="otp">------</code></div>
+    <div class="row">Current code: <code id="otp">------</code> <button id="copyOtp" type="button">Copy</button></div>
     <div class="muted" id="ttl">Loading...</div>
     <button id="openOptions">Open setup</button>
     <script type="module" src="popup.js"></script>

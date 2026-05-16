@@ -15,6 +15,12 @@ export function detectOtpInput(selectors) {
   if (configured) return configured;
 
   const heuristicSelectors = [
+    "input[type='password'][name*='token' i]",
+    "input[type='password'][id*='token' i]",
+    "input[type='password'][name*='otp' i]",
+    "input[type='password'][id*='otp' i]",
+    "input[type='password'][name*='code' i]",
+    "input[type='password'][id*='code' i]",
     "input[autocomplete='one-time-code']",
     "input[inputmode='numeric']",
     "input[name*='otp' i]",
@@ -40,6 +46,12 @@ export function detectOtpInputs(selectors) {
   if (configuredFound.length > 0) return configuredFound;
 
   const heuristicSelectors = [
+    "input[type='password'][name*='token' i]",
+    "input[type='password'][id*='token' i]",
+    "input[type='password'][name*='otp' i]",
+    "input[type='password'][id*='otp' i]",
+    "input[type='password'][name*='code' i]",
+    "input[type='password'][id*='code' i]",
     "input[autocomplete='one-time-code']",
     "input[inputmode='numeric']",
     "input[name*='otp' i]",
